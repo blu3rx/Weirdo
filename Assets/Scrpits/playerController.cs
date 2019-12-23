@@ -11,6 +11,11 @@ public class playerController : MonoBehaviour
     [Header("Floats")]
     private float movement = 0f;
     public float moveSpeed = 2f;
+    public float deadOffset = 5f;
+
+    [Header("Transforms")]
+    public Transform camera;
+
 
     private void Start()
     {
@@ -21,6 +26,8 @@ public class playerController : MonoBehaviour
     {
         movement = Input.GetAxis("Horizontal") * moveSpeed;
 
+        if (transform.position.y < camera.position.y-deadOffset)
+            gameController.Instance.GameOver = true;
 
     }
 

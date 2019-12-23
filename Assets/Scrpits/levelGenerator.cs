@@ -34,7 +34,7 @@ public class levelGenerator : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Spawn position: "+spawnPosition.y+" Player position:"+player.position.y);
+       // Debug.Log("Spawn position: "+spawnPosition.y+" Player position:"+player.position.y);
 
         if (player.position.y + offset >= spawnPosition.y)
         {
