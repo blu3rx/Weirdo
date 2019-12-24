@@ -15,7 +15,7 @@ public class gameController : MonoBehaviour
     private bool _gameOver = false;
 
     [Header("Int")]
-    private int _score = 1;
+    private int _score = 0;
     public int score;
 
     [Header("Floats")]
@@ -52,6 +52,7 @@ public class gameController : MonoBehaviour
 
     private void Update()
     {
+        scoreText.text = "Score: " + _score.ToString();
 
 
         if (_gameOver)
@@ -61,7 +62,6 @@ public class gameController : MonoBehaviour
             _gameOver = false;
         }
 
-        //scoreText.text = _score.ToString();
 
         if (Time.timeScale == 1)
             pauseButton.SetActive(true);          
