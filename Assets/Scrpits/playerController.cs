@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour
     public float switchOffset = 5f;
     public float scoreMultiplair = 10;
     private float count;
+    private float time;
 
 
     [Header("Transforms")]
@@ -30,11 +31,15 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
+
+        //Hareket
         movement = Input.GetAxis("Horizontal") * moveSpeed;
 
+        //Gameover
         if (transform.position.y < camera.position.y - deadOffset)
             gameController.Instance.GameOver = true;
-
+        
+        //Kamera switch
 
         Vector3 pos = transform.position;
         if (transform.position.x > camera.position.x + switchOffset)
@@ -46,9 +51,12 @@ public class playerController : MonoBehaviour
         transform.position = pos;
 
 
-        Debug.Log(transform.position.y - startPos.y);
+        //ScoreHesabı
 
-        count = (transform.position.y - startPos.y) * Random.Range(0, scoreMultiplair);
+        //Debug.Log(time);
+
+        time += Time.deltaTime;
+        count = (transform.position.y - startPos.y)*time;
 
         if (count > 0 && gameController.Instance.Score < count)
             gameController.Instance.Score = Mathf.RoundToInt(count);
